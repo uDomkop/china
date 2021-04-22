@@ -12,6 +12,7 @@ Communism caused a transformation.
 
 "C - h - i - n - a"
   - Donald Trump
+
 Do as Confusius say, is that China?
 No China, should be is its people, most of which are Han Chinese (>90%). //Which is ~20% of world).
 
