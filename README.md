@@ -20,7 +20,7 @@ Who the least?
 ```
 China should be its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
 
-But CCP... Idk...
+But CCP..
 
 //--
 
