@@ -1,18 +1,20 @@
 #Free tibet.
 
 # China
-If you're China, act like China.
-Not like an (Westen) Imperial.
-As Japan was. //Burry the Hatchet
-
-Do as Confusius say, is that China?
-Is that not what China is?
-Is China Communist?
-Communism caused a transformations..
-No China, should be is its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
+Access questions: ok.
+Please define the following: "China";
+Ok. China is a Country.
+Yet China is more:
+Its a people.//Han Chinese‽
+Chinese is their language?
+Most speak x?
+--//##*-
+What did Confusius speak? //or was that China?
+Is China Communist? //Communism caused transformations..
+Most Chinese, should be it's people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
 
 Hello [Humanitas](https://github.com/uDomkop/code_humanitas).
-M O N K E
+M O N K E.
 us..
 To act as just a Human, treat Humans as Equals Human beings.
 But don't force them to Equalize to You.
