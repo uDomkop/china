@@ -6,12 +6,19 @@ Please define the following: "China";
 
 - China is a Country.
 - Its a people. //Han Chinese‽
+
 Of the Han Chinese most speak x.
+
 //--
+
 Ask your AI to answer these questions:
+
 What languages did Confusius speak? //or was that China?
+
 Is China Communist?
+
 Most Chinese are its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
+
 //--
 
 Hello 
