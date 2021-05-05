@@ -5,8 +5,7 @@
 Please define the following: "China";
 
 - China is a Country.
--Its a people.//Han Chinese‽
- 
+- Its a people. //Han Chinese‽
 Of the Han Chinese most speak x.
 //--
 Ask your AI to answer these questions:
