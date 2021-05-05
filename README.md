@@ -1,26 +1,30 @@
-#Free tibet.
+# Free Tibet.
 
 # China
-```
-Access questions: ok.
-Please define the following: "China";
-Ok. China is a Country.
-Yet China is more:
-Its a people.//Han Chinese‽
-Chinese is their language?
-Most speak x?
---//##*-
-What did Confusius speak? //or was that China?
-Is China Communist? //Communism caused transformations..
-Most Chinese, should be it's people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
 
+Please define the following: "China";
+
+- China is a Country.
+-Its a people.//Han Chinese‽
+ 
+Of the Han Chinese most speak x.
+//--
+Ask your AI to answer these questions:
+What languages did Confusius speak? //or was that China?
+Is China Communist?
+Most Chinese are its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
+//--
+
+Hello 
 Hello [Humanitas](https://github.com/uDomkop/code_humanitas).
 M O N K E.
-us..
 To act as just a Human, treat Humans as Equals Human beings.
 But don't force them to Equalize to You.
-Let all be as Free as we can be.
+Let all be as Free as we/they can be.
 
+### As for China. 
+
+You cool, but your CCP should chill.
 
 Heres some sugetions to minimise your imperalistic habbits:
  - Uygur state //Digital Creation on a map, as punishment for your crimes against its people.
