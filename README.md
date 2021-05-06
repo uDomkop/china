@@ -1,7 +1,7 @@
 > #FreeTibet.
 
 # China
-``
+```
 import Lib.Wiki.Taiwan;
 import Lib.Wiki.Tibet; //\O/
 
