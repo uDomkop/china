@@ -14,6 +14,8 @@ Without it the basics
 ```
 .China = new Country("China", Geography.China.PRC[2020] , Languages.China[0] , Law.China.PRC , Other); //or Geography.China.Trimmed[0]
 
+//Geography.China.Trimmed(1) it could be -(minus) A Uygur state, (Greater) [Tibet](https://en.wikipedia.org/wiki/Tibet), Bigger [Mongolia](https://en.wikipedia.org/wiki/Mongolia) and [Taiwan](https://en.wikipedia.org/wiki/Taiwan) (A Ying to its Yang).
+
 //--
 What does that say?:
 - China is a Country.
@@ -22,8 +24,18 @@ What does that say?:
 - Its Peoples
   - Mostly Han Chinese.
 --//
+```
+## Whatever, easy right, whats next?
 
 ```
+.Taiwan =new Country("Taiwan", Geography.China.ROC[2020] , Languages.Taiwan[0] , Law.China.ROC , Other);
+.India = new Country("India", Geography.India[2020] , Languages.India[0] , Law.China.PRC , Other); 
+//.Tibet = new Country("Tibet", Geography.Tibet[2020] , Languages.Tibet[0] , Law.Tibet.Hype , Other);
+
+
+
+```
+
 
 ## Ask your AI to answer these questions:
 - > What languages did Confusius speak?
