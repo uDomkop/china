@@ -14,13 +14,13 @@ Without it the basics
 ```
 .China = new Country("China", Geography.China.PRC[2020] , Languages.China[0] , Law.China.PRC , Other); //or Geography.China.Trimmed[0]
 
-//**
+//--
 - China is a Country.
 - Languages
   - Of the Han Chinese most speak x.
 - Its Peoples
   - Mostly Han Chinese.
-**//
+--//
 
 ```
 
@@ -36,7 +36,7 @@ Without it the basics
 China should be its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
 
 But CCP..
-
+```
 //--
 
 Hello
