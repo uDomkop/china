@@ -72,3 +72,11 @@ Heres some sugetions to minimise your imperalistic habbits:
  - Free HongKong //Keep it Unique, As its history is.
  - Ying (Peace) Taiwan //Zen it up
  - More Mongolia //Just A lil bigger, personal request ;)
+```
+## What your problem with China?
+
+```
+None I'm just not a big fan current CCP policies.
+The should vote for the other guy.
+```
+- DeDomkop
