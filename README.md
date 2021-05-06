@@ -16,14 +16,13 @@ DeDomkop
   - Of the Han Chinese most speak x.
 ``
 //--
-Ask your AI to answer these questions:
-```
+> Ask your AI to answer these questions:
 What languages did Confusius speak?
 Is x part of China?
 Is China Communist?
 Who are Chinas most numerous People?
 Who the least?
-```
+
 China should be its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
 
 But CCP..
