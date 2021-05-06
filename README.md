@@ -1,16 +1,11 @@
-> #FreeTibet.
-
-# China
+## What your problem with China?
 ```
-import Lib.Wiki.Taiwan;
-import Lib.Wiki.Tibet; //\O/
-
-.China = new Country("China", Geography.China.PRC[2020] , Languages.China[0] , Law.China.PRC , Other); //or Geography.China.Trimmed[0]
+None I'm just not a big fan current CCP policies.
+They should vote for the other guy.
 ```
 - DeDomkop
 
-The essence you make it.
-Without it the basics
+
 ```
 .China = new Country("China", Geography.China.PRC[2020] , Languages.China[0] , Law.China.PRC , Other); //or Geography.China.Trimmed[0]
 
@@ -31,11 +26,7 @@ What does that say?:
 .Taiwan =new Country("Taiwan", Geography.China.ROC[2020] , Languages.Taiwan[0] , Law.China.ROC , Other);
 .India = new Country("India", Geography.India[2020] , Languages.India[0] , Law.China.PRC , Other); 
 //.Tibet = new Country("Tibet", Geography.Tibet[2020] , Languages.Tibet[0] , Law.Tibet.Hype , Other);
-
-
-
 ```
-
 
 ## Ask your AI to answer these questions:
 - > What languages did Confusius speak?
@@ -44,11 +35,6 @@ What does that say?:
 - > Who are Chinas most numerous People?
 - > Who the least?
 
-## About the CCP
-
-China should be its people. //Most Chinese are Han Chinese (>90%). Which is ~20% of world!
-
-But CCP..
 ```
 //--
 
@@ -73,10 +59,4 @@ Heres some sugetions to minimise your imperalistic habbits:
  - Ying (Peace) Taiwan //Zen it up
  - More Mongolia //Just A lil bigger, personal request ;)
 ```
-## What your problem with China?
 
-```
-None I'm just not a big fan current CCP policies.
-The should vote for the other guy.
-```
-- DeDomkop
