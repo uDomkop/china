@@ -8,6 +8,11 @@ import Lib.Wiki.Tibet; //\O/
 .China = new Country("China", Geography.China.PRC[2020] , Languages.China[0] , Law.China.PRC , Other); //or Geography.China.Trimmed[0]
 ```
 DeDomkop
+```
+$China = new China(Geography , Languages , Confusius , Other);
+
+$China;
+
 
 - China is a Country.
 - Its peoples.
@@ -15,6 +20,8 @@ DeDomkop
  - Languages
   - Of the Han Chinese most speak x.
 ``
+
+```
 
 ## Ask your AI to answer these questions:
 - > What languages did Confusius speak?
