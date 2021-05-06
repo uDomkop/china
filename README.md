@@ -1,15 +1,20 @@
-// #FreeTibet.
+> #FreeTibet.
 
 # China
+``
+import Lib.Wiki.Taiwan;
+import Lib.Wiki.Tibet; //\O/
 
-Please define the following: "China";
+.China = new Country("China", Geography.China.PRC[2020] , Languages.China[0] , Law.China.PRC , Other); //or Geography.China.Trimmed[0]
+```
+DeDomkop
 
 - China is a Country.
 - Its peoples.
  - Mostly Han Chinese.
  - Languages
   - Of the Han Chinese most speak x.
-
+``
 //--
 Ask your AI to answer these questions:
 ```
