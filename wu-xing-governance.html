@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wu Xing Governance System — The Five Elements Commonwealth</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F0;
+    --bg-secondary: #F2EDE3;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5549;
+    --text-tertiary: #8A857A;
+    --border: rgba(0,0,0,0.08);
+    --border-hover: rgba(0,0,0,0.15);
+    --crimson: #BE3144;
+    --crimson-light: #F5E0E3;
+    --gold: #C8A951;
+    --gold-light: #FBF4E0;
+    --gen-color: #1D6B50;
+    --gen-bg: #E1F5EE;
+    --res-color: #993C1D;
+    --res-bg: #FAECE7;
+    --wood-fill: #E8F0D8; --wood-stroke: #5A8C22; --wood-text: #3B6D11;
+    --fire-fill: #FCE4E4; --fire-stroke: #C04040; --fire-text: #A32D2D;
+    --earth-fill: #FBF0D4; --earth-stroke: #B8860B; --earth-text: #854F0B;
+    --metal-fill: #EDEDEB; --metal-stroke: #7A7A74; --metal-text: #5F5E5A;
+    --water-fill: #DDE9F6; --water-stroke: #3A7CC0; --water-text: #185FA5;
+    --font-display: 'Noto Serif SC', 'Georgia', serif;
+    --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1916;
+      --bg-secondary: #242320;
+      --bg-card: #2A2926;
+      --text-primary: #E8E4DA;
+      --text-secondary: #B0A998;
+      --text-tertiary: #7A7468;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.15);
+      --crimson: #E05A6A;
+      --crimson-light: #3A2228;
+      --gold: #D4B85C;
+      --gold-light: #302A18;
+      --gen-color: #5DCAA5;
+      --gen-bg: #0E2E24;
+      --res-color: #F09B7B;
+      --res-bg: #2E1A14;
+      --wood-fill: #1E2E12; --wood-stroke: #7AAE40; --wood-text: #97C459;
+      --fire-fill: #2E1818; --fire-stroke: #E06060; --fire-text: #F09795;
+      --earth-fill: #2E2610; --earth-stroke: #D4A020; --earth-text: #FAC775;
+      --metal-fill: #262624; --metal-stroke: #9A9A92; --metal-text: #B4B2A9;
+      --water-fill: #142030; --water-stroke: #5A9AD0; --water-text: #85B7EB;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    padding: 3rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-zh {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--crimson);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+  }
+  .header-en {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  .header-sub {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .phase-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+  }
+  .phase-pill {
+    flex: 1;
+    font-size: 0.8rem;
+    padding: 10px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    border-right: 1px solid var(--border);
+    user-select: none;
+  }
+  .phase-pill:last-child { border-right: none; }
+  .phase-pill:hover { color: var(--text-secondary); background: var(--bg-card); }
+  .phase-pill.active {
+    background: var(--bg-card);
+    color: var(--crimson);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .phase-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .element-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 700px) {
+    .element-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 440px) {
+    .element-cards { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .ecard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    text-align: center;
+  }
+  .ecard:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+  .ecard.active { border-width: 2px; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .ecard[data-el="wood"].active { border-color: var(--wood-stroke); background: var(--wood-fill); }
+  .ecard[data-el="fire"].active { border-color: var(--fire-stroke); background: var(--fire-fill); }
+  .ecard[data-el="earth"].active { border-color: var(--earth-stroke); background: var(--earth-fill); }
+  .ecard[data-el="metal"].active { border-color: var(--metal-stroke); background: var(--metal-fill); }
+  .ecard[data-el="water"].active { border-color: var(--water-stroke); background: var(--water-fill); }
+
+  .ecard-icon { font-size: 1.5rem; margin-bottom: 4px; }
+  .ecard-name { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
+  .ecard-zh { font-size: 0.75rem; color: var(--text-tertiary); margin-bottom: 6px; }
+  .ecard-role { font-size: 0.72rem; color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 700px) {
+    .content-grid { grid-template-columns: 1fr; }
+  }
+
+  .svg-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    overflow-y: auto;
+  }
+
+  .detail-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-icon { font-size: 1.5rem; }
+  .detail-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+  .detail-role {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+  }
+
+  .detail-section { margin-bottom: 1rem; }
+  .detail-label {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .detail-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .cycle-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+  .gen-tag { background: var(--gen-bg); color: var(--gen-color); }
+  .res-tag { background: var(--res-bg); color: var(--res-color); }
+  .cycle-explain {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    margin-top: 2px;
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  .footer-zh {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  .footer-credit {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+  }
+
+  svg text { font-family: var(--font-body); }
+
+  .node-circle { cursor: pointer; transition: all 0.2s; }
+  .node-circle:hover { filter: brightness(1.1); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-zh">五行共和</div>
+  <div class="header-en">The Five Elements Commonwealth</div>
+  <div class="header-sub">A Wu Xing governance model for Chinese reunification — DeDomkop, 2026</div>
+</div>
+
+<div class="main">
+  <div class="phase-bar" id="phase-bar"></div>
+  <div class="phase-desc" id="phase-desc"></div>
+  <div class="element-cards" id="cards"></div>
+  <div class="content-grid">
+    <div class="svg-panel">
+      <svg id="cycle-svg" width="100%" viewBox="0 0 400 400"></svg>
+    </div>
+    <div class="detail-panel" id="detail"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-zh">"五色令人目盲，五音令人耳聾，五味令人口爽。然无之，何以知之？"</div>
+  <div class="footer-credit">Loosely after Laozi, Chapter 12 · From "The Five Elements Commonwealth" proposal</div>
+</div>
+
+<script>
+const elements = [
+  {
+    id: "wood", icon: "\uD83C\uDF33", name: "Wood", zh: "木 mù",
+    role: "Growth council",
+    domain: "Economy, innovation, education, science, R&D",
+    generates: "fire", restrains: "earth",
+    genText: "Economic growth enables public deliberation — prosperity creates the space for citizens to engage politically.",
+    resText: "Growth challenges complacency — innovation disrupts entrenched interests and forces the Harmony Commission to adapt.",
+    institutions: "Joint economic zones, shared R&D programmes, semiconductor and green energy consortia. Staffed by economists, scientists, entrepreneurs.",
+    phaseNotes: [
+      "Not yet formalised. Cross-strait trade agreements and joint investment zones begin building the foundation.",
+      "Emerges from joint economic zones. Co-investment in semiconductors, AI, and green energy requires shared governance.",
+      "Full Growth Council with authority over pan-Chinese economic policy, innovation funding, education standards."
+    ]
+  },
+  {
+    id: "fire", icon: "\uD83D\uDD25", name: "Fire", zh: "火 huǒ",
+    role: "Deliberation assembly",
+    domain: "Legislation, rights, public debate, media, culture",
+    generates: "earth", restrains: "metal",
+    genText: "Open debate creates social understanding — public deliberation surfaces shared values and builds the consensus that Earth needs.",
+    resText: "Deliberation questions rigid enforcement — the assembly can challenge the Order Ministry when laws become oppressive.",
+    institutions: "Elected legislative body with proportional representation from all regions. Free press protections. Cultural exchange programmes.",
+    phaseNotes: [
+      "The two fires themselves — PRC and ROC each maintain their own legislative systems. Cross-strait cultural exchanges begin.",
+      "Grows from civil society exchange — joint media, academic conferences, cultural festivals. Gradually formalised with advisory power.",
+      "Full Deliberation Assembly with legislative authority. Multiple parties compete. This is where Taiwan's democratic DNA lives."
+    ]
+  },
+  {
+    id: "earth", icon: "\uD83C\uDF0D", name: "Earth", zh: "土 tǔ",
+    role: "Harmony commission",
+    domain: "Mediation, ethnic affairs, regional balance, welfare",
+    generates: "metal", restrains: "water",
+    genText: "Social consensus enables legitimate enforcement — when people agree on norms, the rules carry authority.",
+    resText: "Stability prevents paralysis by analysis — Earth stops the Wisdom Archive from endlessly deliberating without resolution.",
+    institutions: "Mediators for inter-regional disputes. Manages ethnic and linguistic diversity. Oversees Hong Kong, Macau, Tibet, Xinjiang autonomy.",
+    phaseNotes: [
+      "Informal mediation through the Strait Council. Building mutual understanding between systems.",
+      "Becomes necessary as integration deepens. Mediating Cantonese, Hokkien, Mandarin, Hakka, Tibetan, Uyghur, and indigenous Taiwanese interests.",
+      "Constitutional body guaranteeing regional autonomy. The CCP's natural home — its experience in governing diversity becomes an asset."
+    ]
+  },
+  {
+    id: "metal", icon: "\u2699\uFE0F", name: "Metal", zh: "金 jīn",
+    role: "Order ministry",
+    domain: "Defence, law enforcement, justice, infrastructure",
+    generates: "water", restrains: "wood",
+    genText: "Structured institutions generate wisdom — stable order creates the conditions for long-term thinking and institutional memory.",
+    resText: "Rules prevent unchecked expansion — Metal constrains Growth to ensure it doesn't become exploitative or destabilising.",
+    institutions: "Shared defence coordination, maritime law, cybersecurity, disaster response. Courts and justice system. Infrastructure standards.",
+    phaseNotes: [
+      "Practical coordination only — maritime law enforcement, disaster response, anti-piracy. No shared military command.",
+      "Develops from practical coordination. Shared standards before shared authority. Joint cybersecurity operations.",
+      "Full Order Ministry. The PLA transforms into a professional military under civilian oversight from multiple elements, not one party."
+    ]
+  },
+  {
+    id: "water", icon: "\uD83C\uDF0A", name: "Water", zh: "水 shuǐ",
+    role: "Wisdom archive",
+    domain: "Audit, oversight, constitutional review, long-term planning",
+    generates: "wood", restrains: "fire",
+    genText: "Long-term insight guides new growth — the Archive's foresight and institutional memory inform where investment should flow.",
+    resText: "Oversight tempers populist excess — Water holds veto power over constitutional changes, checking the Assembly's short-term impulses.",
+    institutions: "Independent scholars, jurists, elders. Staffed through modernised imperial examination (kējǔ) + democratic election. Constitutional guardian.",
+    phaseNotes: [
+      "Not yet formalised. Academic exchanges and joint research institutes begin building shared intellectual foundations.",
+      "Established as an independent advisory body — scholars and jurists reviewing whether integration is proceeding on principled terms.",
+      "Full constitutional court with veto over foundational changes (not policy). Inspired by the imperial censorate, democratised. The system's anchor."
+    ]
+  }
+];
+
+const phaseDescs = [
+  "Phase 1 — Two Fires: Begin with what exists. PRC and ROC retain their domestic systems completely. A thin shared layer — the Strait Council — handles only cross-strait matters through consensus. No constitutional changes required. Wu wei: create conditions for convergence rather than forcing it.",
+  "Phase 2 — Elements emerge: As trust builds over years or decades, the five governance functions gradually become shared institutions. This happens not by decree but by practical necessity — when you're co-investing in semiconductors, you need shared governance.",
+  "Phase 3 — Full commonwealth: A civilisational commonwealth where governance is distributed across five elements. No single centre of power. The CCP doesn't disappear — it evolves. Leadership rotates following the Wu Xing generating order."
+];
+
+const phaseNames = ["Phase 1: two fires", "Phase 2: elements emerge", "Phase 3: full commonwealth"];
+
+let currentElement = 0;
+let currentPhase = 2;
+
+const genCycle = ["wood","fire","earth","metal","water"];
+
+function findEl(id) { return elements.find(e => e.id === id); }
+
+function renderPhaseBar() {
+  document.getElementById("phase-bar").innerHTML = phaseNames.map((n, i) =>
+    `<div class="phase-pill ${i === currentPhase ? 'active' : ''}" onclick="setPhase(${i})">${n}</div>`
+  ).join("");
+}
+
+function renderCards() {
+  document.getElementById("cards").innerHTML = elements.map((el, i) => `
+    <div class="ecard ${i === currentElement ? 'active' : ''}" data-el="${el.id}" onclick="selectElement(${i})">
+      <div class="ecard-icon">${el.icon}</div>
+      <div class="ecard-name">${el.name}</div>
+      <div class="ecard-zh">${el.zh}</div>
+      <div class="ecard-role">${el.role}</div>
+    </div>
+  `).join("");
+}
+
+function renderDetail() {
+  const el = elements[currentElement];
+  const genTarget = findEl(el.generates);
+  const resTarget = findEl(el.restrains);
+  document.getElementById("detail").innerHTML = `
+    <div class="detail-header">
+      <div class="detail-icon">${el.icon}</div>
+      <div>
+        <div class="detail-title">${el.name} — ${el.role}</div>
+        <div class="detail-role">${el.domain}</div>
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Phase ${currentPhase + 1} status</div>
+      <div class="detail-text">${el.phaseNotes[currentPhase]}</div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Institutions</div>
+      <div class="detail-text">${el.institutions}</div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Generating cycle</div>
+      <div class="cycle-tag gen-tag">Generates ${genTarget.name}</div>
+      <div class="cycle-explain">${el.genText}</div>
+      <div class="detail-label">Restraining cycle</div>
+      <div class="cycle-tag res-tag">Restrains ${resTarget.name}</div>
+      <div class="cycle-explain">${el.resText}</div>
+    </div>
+  `;
+}
+
+function renderSVG() {
+  const svg = document.getElementById("cycle-svg");
+  const cx = 200, cy = 195, r = 120;
+  const positions = [];
+  for (let i = 0; i < 5; i++) {
+    const angle = -Math.PI/2 + (i * 2 * Math.PI / 5);
+    positions.push({ x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) });
+  }
+
+  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const fills = elements.map(e => getComputedStyle(document.documentElement).getPropertyValue(`--${e.id}-fill`).trim());
+  const strokes = elements.map(e => getComputedStyle(document.documentElement).getPropertyValue(`--${e.id}-stroke`).trim());
+  const texts = elements.map(e => getComputedStyle(document.documentElement).getPropertyValue(`--${e.id}-text`).trim());
+  const genCol = getComputedStyle(document.documentElement).getPropertyValue('--gen-color').trim();
+  const resCol = getComputedStyle(document.documentElement).getPropertyValue('--res-color').trim();
+  const textSec = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
+  const textTer = getComputedStyle(document.documentElement).getPropertyValue('--text-tertiary').trim();
+
+  let s = `<defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>`;
+
+  for (let i = 0; i < 5; i++) {
+    const next = (i + 1) % 5;
+    const p1 = positions[i], p2 = positions[next];
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const ux = dx/len, uy = dy/len;
+    const x1 = p1.x + ux*34, y1 = p1.y + uy*34;
+    const x2 = p2.x - ux*34, y2 = p2.y - uy*34;
+    const active = currentElement === i;
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${genCol}" stroke-width="${active ? 2.5 : 1}" opacity="${active ? 1 : 0.25}" marker-end="url(#arr)"/>`;
+  }
+
+  const resMap = [[0,2],[2,4],[4,1],[1,3],[3,0]];
+  for (const [a,b] of resMap) {
+    const p1 = positions[a], p2 = positions[b];
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const ux = dx/len, uy = dy/len;
+    const x1 = p1.x + ux*34, y1 = p1.y + uy*34;
+    const x2 = p2.x - ux*34, y2 = p2.y - uy*34;
+    const active = elements[currentElement].restrains === genCycle[b];
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${resCol}" stroke-width="${active ? 1.8 : 0.5}" opacity="${active ? 0.7 : 0.12}" stroke-dasharray="4 3" marker-end="url(#arr)"/>`;
+  }
+
+  for (let i = 0; i < 5; i++) {
+    const el = elements[i];
+    const p = positions[i];
+    const active = i === currentElement;
+    const rad = active ? 28 : 23;
+    s += `<g class="node-circle" onclick="selectElement(${i})">`;
+    s += `<circle cx="${p.x}" cy="${p.y}" r="${rad}" fill="${fills[i]}" stroke="${strokes[i]}" stroke-width="${active ? 2.5 : 1}"/>`;
+    s += `<text x="${p.x}" y="${p.y}" text-anchor="middle" dominant-baseline="central" font-size="16">${el.icon}</text>`;
+    const labelY = p.y < cy - 20 ? p.y - rad - 14 : p.y > cy + 20 ? p.y + rad + 16 : p.y;
+    const labelX = p.x < cx - 20 ? p.x - 8 : p.x > cx + 20 ? p.x + 8 : p.x;
+    const anchor = p.x < cx - 40 ? "end" : p.x > cx + 40 ? "start" : "middle";
+    s += `<text x="${labelX}" y="${labelY}" text-anchor="${anchor}" font-size="13" font-weight="${active ? 600 : 400}" fill="${active ? texts[i] : textSec}">${el.name}</text>`;
+    s += `</g>`;
+  }
+
+  s += `<text x="10" y="385" font-size="11" fill="${textTer}"><tspan fill="${genCol}">——</tspan> generates</text>`;
+  s += `<text x="110" y="385" font-size="11" fill="${textTer}"><tspan fill="${resCol}">- - -</tspan> restrains</text>`;
+
+  svg.innerHTML = s;
+}
+
+function selectElement(i) {
+  currentElement = i;
+  renderCards();
+  renderDetail();
+  renderSVG();
+}
+
+function setPhase(p) {
+  currentPhase = p;
+  document.getElementById("phase-desc").textContent = phaseDescs[p];
+  renderPhaseBar();
+  renderDetail();
+}
+
+renderPhaseBar();
+document.getElementById("phase-desc").textContent = phaseDescs[currentPhase];
+renderCards();
+renderDetail();
+renderSVG();
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderSVG(); });
+</script>
+</body>
+</html>
